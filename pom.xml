@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.cybergarage.cyberlink</groupId>
+  <groupId>org.cybergarage.upnp</groupId>
   <packaging>pom</packaging>
-  <artifactId>cyberlink</artifactId>  
-  <version>${cyberlink.version}</version>
+  <artifactId>cybergarage-upnp</artifactId>  
+  <version>${cybergarage-upnp.version}</version>
 
-  <name>CyberGarage CyberLink Suite</name>
+  <name>cybergarage-upnp Suite</name>
   <description>A set of UPnP tools, libraries and softwares</description>
   <url>http://www.cybergarage.org/</url>
 
   <properties>
-    <cyberlink.version>2.1.0</cyberlink.version>
+    <cybergarage-upnp.version>2.1.1</cybergarage-upnp.version>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
   
   <scm>
-  	<connection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</connection>
-  	<developerConnection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</developerConnection>
-  	<url>https://github.com/cybergarage/CyberLink4Java/blob/master/</url>
+  	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
+  	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
+  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/</url>
   </scm>
 
   <organization>
@@ -28,7 +30,7 @@
   <developers>
   	<developer>
   		<id>skonno</id>
-  		<email>skonno@users.sourceforge.net</email>
+  		<email>skonno@cybergarage.org</email>
   		<name>Satoshi Konno</name>
   		<url>http://www.cybergarage.org/</url>  		
   		<roles>
@@ -52,14 +54,6 @@
   
   <contributors />
   
-  <distributionManagement>
-    <repository>
-      <id>org.cybergarage</id>
-      <name>Cyber Garage Maven Repository</name>
-      <url>file:///var/www/maven/repo/</url>
-    </repository>
-  </distributionManagement>
-
   <modules>
     <module>core</module>
     <module>std</module>
@@ -85,16 +79,17 @@
     </dependencies>
   </dependencyManagement>
 
+  <distributionManagement>
+    <repository>
+      <id>org.cybergarage</id>
+      <name>Cyber Garage Maven Repository</name>
+      <url>file:///var/www/maven/repo/</url>
+    </repository>
+  </distributionManagement>
+
   <build>
     <pluginManagement>
       <plugins>
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <configuration>
-            <skip>true</skip>
-          </configuration>
-        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>

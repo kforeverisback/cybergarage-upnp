@@ -2,32 +2,32 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
-    <artifactId>cyberlink</artifactId>
-    <groupId>org.cybergarage.cyberlink</groupId>
+    <artifactId>cybergarage-upnp</artifactId>
+    <groupId>org.cybergarage.upnp</groupId>
     <relativePath>../../</relativePath>
-    <version>${cyberlink.version}</version>
+    <version>${cybergarage-upnp.version}</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-    <groupId>org.cybergarage.cyberlink</groupId>
-  <artifactId>control-point</artifactId>
+    <groupId>org.cybergarage.upnp</groupId>
+  <artifactId>upnp-ctrl</artifactId>
   <packaging>jar</packaging>
-  <version>${cyberlink.version}</version>
-  <name>CyberLink UPnP Control Point</name>
+  <version>${cybergarage-upnp.version}</version>
+  <name>cybergarage-upnp Control Point Utility</name>
   <description>A pure Java Open Source implementation of the UPnP Control Point</description>
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
   
   <licenses>
   	<license>
   		<name>BSD</name>
-  		<url>https://github.com/cybergarage/CyberLink4Java/blob/master/LICENSE.txt</url>
+  		<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/LICENSE.txt</url>
   	</license>
   </licenses>
   
   <scm>
-  	<connection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</connection>
-  	<developerConnection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</developerConnection>
-  	<url>https://github.com/cybergarage/CyberLink4Java/blob/master/tools/control-point</url>
+  	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
+  	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
+  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/tools/control-point</url>
   </scm>
   
   <developers />
@@ -36,9 +36,9 @@
   
   <dependencies>
     <dependency>
-      <groupId>org.cybergarage.cyberlink</groupId>
-      <artifactId>cyberlink-core</artifactId>
-      <version>${cyberlink.version}</version>
+      <groupId>org.cybergarage.upnp</groupId>
+      <artifactId>cybergarage-upnp-core</artifactId>
+      <version>${cybergarage-upnp.version}</version>
     </dependency>
   </dependencies>
 

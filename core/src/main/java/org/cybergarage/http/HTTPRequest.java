@@ -49,6 +49,9 @@
 *	07/07/05
 *		- Lee Peik Feng <pflee@users.sourceforge.net>
 *		- Fixed post() to output the chunk size as a hex string.
+*	08/14/18
+*		- d0t451
+*		- send http packet at one time to fix TP-LINK TL-WAR450L bug
 *
 ******************************************************************/
 
@@ -409,8 +412,13 @@ public class HTTPRequest extends HTTPPacket
 
 			out = postSocket.getOutputStream();
 			PrintStream pout = new PrintStream(out);
-			pout.print(getHeader());
-			pout.print(HTTP.CRLF);
+
+			// Thanks for d0t451 (08/14/18)
+			// send http packet at one time to fix TP-LINK TL-WAR450L bug
+
+			String httpPacket = "";
+			httpPacket += getHeader();
+			httpPacket += HTTP.CRLF;
 			
 			boolean isChunkedRequest = isChunked();
 			
@@ -423,19 +431,21 @@ public class HTTPRequest extends HTTPPacket
 				if (isChunkedRequest == true) {
 					// Thanks for Lee Peik Feng <pflee@users.sourceforge.net> (07/07/05)
 					String chunSizeBuf = Long.toHexString(contentLength);
-					pout.print(chunSizeBuf);
-					pout.print(HTTP.CRLF);
+					httpPacket += chunSizeBuf;
+					httpPacket += HTTP.CRLF;
 				}
-				pout.print(content);
-				if (isChunkedRequest == true)
-					pout.print(HTTP.CRLF);
+				httpPacket += content;
+				if (isChunkedRequest == true) {
+					httpPacket += HTTP.CRLF;
+				}
 			}
 
 			if (isChunkedRequest == true) {
-				pout.print("0");
-				pout.print(HTTP.CRLF);
+				httpPacket += "0";
+				httpPacket += HTTP.CRLF;
 			}
-			
+
+			pout.print(httpPacket);
 			pout.flush();
 
 			in = postSocket.getInputStream();

@@ -23,6 +23,7 @@
 
 package org.cybergarage.upnp.ssdp;
 
+import java.net.BindException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -53,7 +54,7 @@ public class HTTPUSocket
 		open();
 	}
 	
-	public HTTPUSocket(String bindAddr, int bindPort)
+	public HTTPUSocket(String bindAddr, int bindPort) throws BindException
 	{
 		open(bindAddr, bindPort);
 	}
@@ -114,7 +115,7 @@ public class HTTPUSocket
 		return true;
 	}
 	
-	public boolean open(String bindAddr, int bindPort)
+	public boolean open(String bindAddr, int bindPort) throws BindException
 	{
 		close();
 		
@@ -123,10 +124,14 @@ public class HTTPUSocket
 			InetSocketAddress bindInetAddr = new InetSocketAddress(InetAddress.getByName(bindAddr), bindPort);
 			ssdpUniSock = new DatagramSocket(bindInetAddr);
 		}
-		catch (Exception e) {
-			Debug.warning(e);
-			return false;
-		}
+        catch (BindException possible) {
+            Debug.warning(possible);
+            throw possible;
+        }
+        catch (Exception e) {
+            Debug.warning(e);
+            return false;
+        }
 
 		/*
 		try {
@@ -193,15 +198,17 @@ public class HTTPUSocket
 
 	public boolean post(String addr, int port, String msg)
 	{
-		 try {
+		try {
 			InetAddress inetAddr = InetAddress.getByName(addr);
 			DatagramPacket dgmPacket = new DatagramPacket(msg.getBytes(), msg.length(), inetAddr, port);
 			ssdpUniSock.send(dgmPacket);
 		}
 		catch (Exception e) {
-			Debug.warning("addr = " +ssdpUniSock.getLocalAddress().getHostName());
-			Debug.warning("port = " + ssdpUniSock.getLocalPort());
 			Debug.warning(e);
+			if (ssdpUniSock != null) {
+				Debug.warning("addr = " + ssdpUniSock.getLocalAddress().getHostName());
+				Debug.warning("port = " + ssdpUniSock.getLocalPort());
+			}
 			return false;
 		}
 		return true;

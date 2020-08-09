@@ -2,18 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <parent>
-    <artifactId>cyberlink</artifactId>
-    <groupId>org.cybergarage.cyberlink</groupId>
+    <artifactId>cybergarage-upnp</artifactId>
+    <groupId>org.cybergarage.upnp</groupId>
     <relativePath>../../</relativePath>
-    <version>${cyberlink.version}</version>
+    <version>${cybergarage-upnp.version}</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.cybergarage.cyberlink.samples</groupId>
-  <artifactId>igd-tool</artifactId>
+  <groupId>org.cybergarage.upnp.samples</groupId>
+  <artifactId>upnp-igd</artifactId>
   <packaging>jar</packaging>
-  <version>${cyberlink.version}</version>
-  <name>CyberLink Internet Gateway Profile Tool</name>
+  <version>${cybergarage-upnp.version}</version>
+  <name>cybergarage-upnp Internet Gateway Profile Utility</name>
   <description>A sample tool which interact with the UPnP device complaint with the Internet Gateway Profile</description>
   
   <url>http://sourceforge.net/projects/cgupnpjava/</url>
@@ -21,21 +21,21 @@
   <licenses>
   	<license>
   		<name>BSD</name>
-  		<url>https://github.com/cybergarage/CyberLink4Java/blob/master/LICENSE.txt</url>
+  		<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/LICENSE.txt</url>
   	</license>
   </licenses>
   
   <scm>
-  	<connection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</connection>
-  	<developerConnection>scm:git:https://github.com/cybergarage/CyberLink4Java.git</developerConnection>
-  	<url>https://github.com/cybergarage/CyberLink4Java/blob/master/tools/igd-tool</url>
+  	<connection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</connection>
+  	<developerConnection>scm:git:https://github.com/cybergarage/cybergarage-upnp.git</developerConnection>
+  	<url>https://github.com/cybergarage/cybergarage-upnp/blob/master/tools/igd-tool</url>
   </scm>
 
   <dependencies>
     <dependency>
-      <groupId>org.cybergarage.cyberlink</groupId>
-      <artifactId>cyberlink-core</artifactId>
-      <version>${cyberlink.version}</version>
+      <groupId>org.cybergarage.upnp</groupId>
+      <artifactId>cybergarage-upnp-core</artifactId>
+      <version>${cybergarage-upnp.version}</version>
     </dependency>
   </dependencies>
 
